@@ -80,3 +80,44 @@ fi
 #### Type J (jump)
 | op (6 bits) | address (26 bits) == word address, not an offset |
 |:-----------:|-------------------------------------------------:|
+### Transistors: AND, OR, NOT
+![image](https://user-images.githubusercontent.com/84046974/191073967-967f724f-aa78-473f-992d-112c6143bbf4.png)
+### Registers
+* A hardware asset whose role is that of information storing (information: data value or instruction)
+* The storage type with shortest latency – part of the CU & ALU combo
+  * Latency – can be of the order of hundreds of picoseconds
+* Size = 32 bits (now 64 bits)
+* Number of registers = 32 -> depending on the design of the chip
+* Types
+  * Staple in most ISA
+    * Current Instruction Register (CIR) – holds the instruction that is executed
+    * Program Counter (PC) – holds address of the instruction executed next
+    * Memory Data Register (MDR) – holds data read in from memory or, alternatively, produced by the ALU and waiting to be stored in memory
+    * Memory Address Register (MAR) – holds address of RAM memory location where input/output data is supposed to be read in/written out
+    * Return Address (RA) – the address where upon finishing a sequence of instructions, the execution should jump and commence with the execution of subsequent instruction
+  * Other saved between function calls
+    * Registers for Subroutine Arguments (4) – a0 through a3
+    * Registers for Temporary Variables (10) – t0 through t9
+    * Registers for Saved Temporary Variables (8) – s0 through s7
+  * Other involved in handling function calls
+    * Stack Pointer (sp) – a register that holds an address that points to the top of the stack
+    * Global Pointer (gp) –  register that holds on to a global pointer that points into the middle of a 64KB block of memory in the heap that holds constants and global variables (these objects can be quickly accessed with a single load or store instruction)
+    * Frame Pointer (fp) - a register that holds an address that points to the beginning of the procedure frame (for instance, the previous sp before this function changed its value)
+### Pipelining
+#### FDX - Each stage has substages and takes a certain number of cycles
+Stage 1: Fetch an instruction  
+Stage 2: Decode the instruction  
+Stage 3: Data access  
+Stage 4: Execute the operation (e.g., might be a request to calculate an address)  
+Stage 5: Write-back into register file
+#### Characteristics
+* Balanced == each of pipeline stage takes the same amount of time for completion
+* Benefits: Faster execution & No code rewrite needed
+* One clock cycle: the amount of time required to complete one stage of the pipeline
+* Pipelined processor: one instruction retired at each clock cycle
+* Non-pipelined processor: no overlap when executing instructions
+* Important Remark: Pipelining does not decrease the time to complete one instruction but rather it increases the throughput of the processor by overlapping different stages of processing of different instructions
+#### Hazards
+##### Structural Hazards
+##### Data Hazards
+##### Control Hazards
