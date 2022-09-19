@@ -118,6 +118,36 @@ Stage 5: Write-back into register file
 * Non-pipelined processor: no overlap when executing instructions
 * Important Remark: Pipelining does not decrease the time to complete one instruction but rather it increases the throughput of the processor by overlapping different stages of processing of different instructions
 #### Hazards
-##### Structural Hazards
-##### Data Hazards
-##### Control Hazards
+1. Structural Hazards
+    1. Increase register number
+    2. Introduce bubbles in the pipeline to slow down the execution
+    3. OOOE (Out-Of-Order Execution)
+2. Data Hazards
+    1. Immediate Result Forwarding: provide the means for that value in the ALU to be made available to other stages of the pipeline right away
+        1. avoids bubbling
+        2. however, this does not guarantee resolution
+    2. OOOE
+3. Control Hazards
+    1. Static Branch Prediction: several heuristics for proceeding, like a do-while construct
+    2. Dynamic Branch Prediction: At a branching point, the branch/no-branch decision can change during the life of a program based on recent history
+        1. In some cases, branch prediction accuracy hits 90%
+        2. Use with if-then-else statements
+    3. Note: when your prediction is wrong you have to discard the [micro]instruction[s] executed speculatively and take the correct execution path
+### Multiple-Issue
+* A multiple-issue processor core has the hardware chops to issue more than one instruction per cycle
+* On average, more than one instruction is processed by the same core in the same clock cycle
+* Static multiple-issue: predefined, doesn’t change at run time
+* Dynamic multiple-issue: determined at run time, the chip has dedicated hardware resources that can identify and execute additional work
+  * Make sure the result has no difference if the instructions are executed "multiple-issue" or "single issue"
+### Parallelism happens on a SINGLE hardware CORE
+* ILP (Instruction-Level Parallelism)
+  * simultaneously multiple instructions belong to the same program or process
+  * associated with one PC (Program Counter)
+* TLP (Thread Level Parallelism)
+  * simultaneously instructions from different processes or different threads
+  * associated with multiple PCs
+* Process & Thread
+  * Processes run in separate memory spaces -- distributed-memory parallel computing
+  * Threads (of the same process) run in a shared memory space -- shared-memory parallel computing
+### Multi-threading
+
