@@ -156,4 +156,10 @@ Stage 5: Write-back into register file
 * Fine: Instruction Control can issue instructions from a different thread each cycle
 * Simutaneous: Instruction Control can issue instructions from different threads in the same cycle
 ### Measure Speed of Execution
+* 𝐶𝑃𝑈 𝐸𝑥𝑒𝑐𝑢𝑡𝑖𝑜𝑛 𝑇𝑖𝑚𝑒 = 𝐼𝑛𝑠𝑡𝑟𝑢𝑐𝑡𝑖𝑜𝑛 𝐶𝑜𝑢𝑛𝑡 × 𝐶𝑃𝐼 × 𝐶𝑙𝑜𝑐𝑘 𝐶𝑦𝑐𝑙𝑒 𝑇𝑖𝑚𝑒 
+* 𝐶𝑃𝑈 𝐸𝑥𝑒𝑐𝑢𝑡𝑖𝑜𝑛 𝑇𝑖𝑚𝑒 = (𝐼𝑛𝑠𝑡𝑟𝑢𝑐𝑡𝑖𝑜𝑛 𝐶𝑜𝑢𝑛𝑡 × 𝐶𝑃𝐼) / 𝐶𝑙𝑜𝑐𝑘 𝑅𝑎𝑡𝑒
+* Improve performance
+  * reducing Clock Cycle Time hits the power wall
+  * reducing the Instruction Count (IC) often leads to an increase in CPI, and vice versa
 
+## Memory Aspects
