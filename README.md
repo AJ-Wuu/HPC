@@ -174,17 +174,21 @@ Stage 5: Write-back into register file
   * Drawback: capacitors leak -- need to recharge often
 ![image](https://user-images.githubusercontent.com/84046974/191094139-41bd2bcf-7dac-406a-af2f-971074bd651a.png)
 ![image](https://user-images.githubusercontent.com/84046974/191094173-5a345b99-c407-4056-bbad-b856e32ae460.png)
+
 ### Cache
 * All caches are typically on the chip and are SRAM
 * All read/write operations go through cache
 * Caches used to hold both data and instructions
 * Chip datapath:
 ![image](https://user-images.githubusercontent.com/84046974/191095052-6f381f08-91b1-4afb-9c1d-a79fa8fd9b0f.png)
+
 ### Processor Clock & Memory Clock
 <img width="523" alt="image" src="https://user-images.githubusercontent.com/84046974/191095414-8eb9aa17-d9c9-407e-9d96-01dd83c3f93c.png">
+
 ### Cache Hierarchy
 <img width="161" alt="image" src="https://user-images.githubusercontent.com/84046974/191095638-d8e58031-234a-4231-812f-dd6ce246f6dc.png">
 <img width="397" alt="image" src="https://user-images.githubusercontent.com/84046974/191095909-c535e491-1203-4e78-bed8-3725a753711b.png">
+
 ### Principle of Locality
 * Temporal locality: Recently referenced items are likely to be referenced again in the near future
 * Spatial locality: Items with nearby addresses tend to come into use together
