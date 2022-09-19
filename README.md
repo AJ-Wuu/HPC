@@ -65,7 +65,18 @@ fi
     * Flexibility at the price of complexity and power
 ![image](https://user-images.githubusercontent.com/84046974/191065490-31c1eb91-8612-4ec9-97a8-2a0bc1083764.png)
 ![image](https://user-images.githubusercontent.com/84046974/191066153-a1beda39-7d31-4b38-a1ba-d6f775ca726e.png)
-#### Fetch-Decode-Execute (FDX) cycle -- keeps the CU and ALU busy
+### Fetch-Decode-Execute (FDX) cycle -- keeps the CU and ALU busy, instruction after instruction
 * Fetch: an instruction is fetched from memory
 * Decode: the string of 1s and 0s are decoded by the CU
 * Execute: once all data (operands) available, instruction is executed (can take several cycles of the CPU)
+### Decoding Instruction Types
+#### Opcode contains which type it is
+#### Type I (immediate)
+| op (6 bits) | rs (5 bits) | rt (5 bits) | constant or address (16 bits) == the “immediate” value == the offset value in instructions |
+|:-----------:|------------:|------------:|-------------------------------------------------------------------------------------------:|
+#### Type R (register)
+| op (6 bits) | rs (5 bits) | rt (5 bits) | rd (5 bits) == new dest | shamt (5 bits) == shift amount | funct (6 bits) == function code |
+|:-----------:|------------:|------------:|------------------------:|-------------------------------:|--------------------------------:|
+#### Type J (jump)
+| op (6 bits) | address (26 bits) == word address, not an offset |
+|:-----------:|-------------------------------------------------:|
