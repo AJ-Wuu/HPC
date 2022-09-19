@@ -65,6 +65,7 @@ fi
     * Flexibility at the price of complexity and power
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191065490-31c1eb91-8612-4ec9-97a8-2a0bc1083764.png">
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191066153-a1beda39-7d31-4b38-a1ba-d6f775ca726e.png">
+
 ### Fetch-Decode-Execute (FDX) cycle -- keeps the CU and ALU busy, instruction after instruction
 * Fetch: an instruction is fetched from memory
 * Decode: the string of 1s and 0s are decoded by the CU
@@ -82,6 +83,7 @@ fi
 |:-----------:|-------------------------------------------------:|
 ### Transistors: AND, OR, NOT
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191073967-967f724f-aa78-473f-992d-112c6143bbf4.png">
+
 ### Registers
 * A hardware asset whose role is that of information storing (information: data value or instruction)
 * The storage type with shortest latency – part of the CU & ALU combo
