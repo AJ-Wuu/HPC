@@ -186,7 +186,6 @@ Stage 5: Write-back into register file
 <img width="523" alt="image" src="https://user-images.githubusercontent.com/84046974/191095414-8eb9aa17-d9c9-407e-9d96-01dd83c3f93c.png">
 
 ### Cache Hierarchy
-<img width="161" alt="image" src="https://user-images.githubusercontent.com/84046974/191095638-d8e58031-234a-4231-812f-dd6ce246f6dc.png">
 <img width="397" alt="image" src="https://user-images.githubusercontent.com/84046974/191095909-c535e491-1203-4e78-bed8-3725a753711b.png">
 
 ### Principle of Locality
