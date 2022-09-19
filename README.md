@@ -183,14 +183,10 @@ Stage 5: Write-back into register file
 * Caches used to hold both data and instructions
 * Chip datapath:
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191095052-6f381f08-91b1-4afb-9c1d-a79fa8fd9b0f.png">
-
-### Processor Clock & Memory Clock
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191095414-8eb9aa17-d9c9-407e-9d96-01dd83c3f93c.png">
-
-### Cache Hierarchy
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191095909-c535e491-1203-4e78-bed8-3725a753711b.png">
 
 ### Principle of Locality
 * Temporal locality: Recently referenced items are likely to be referenced again in the near future
 * Spatial locality: Items with nearby addresses tend to come into use together
-
+### Cache Line / Cache Block
