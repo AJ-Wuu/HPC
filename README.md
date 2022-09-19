@@ -190,3 +190,45 @@ Stage 5: Write-back into register file
 * Temporal locality: Recently referenced items are likely to be referenced again in the near future
 * Spatial locality: Items with nearby addresses tend to come into use together
 ### Cache Line / Cache Block
+* Policy
+  * Placement policy: determines where Block b goes
+  * Replacement policy: determines which block gets evicted (victim), should there be any freedom of choice
+  * Types
+    * Direct mapping (E = 1, fast, sometimes need to evict useful parts as no freedom at all): one apartment per floor, like a skinny skyscraper
+    * Associative, K-way (E = k, decent compromise): a certain number of floors, each with K apartments, like a Hilton Garden Inn
+    * Fully associative cache (S = 1, full-control, high overhead in finding data and deciding whom to evict): apartment complex with ground level only, like a Motel
+* Cache Miss Reasons
+  * cold / compulsory miss: cache is empty
+  * capacity miss: not enough space, working set is too large
+  * conflict miss: enough space but "bad luck" -- multiple data objects map to the same block
+* Cache Miss by Request Types
+  * read miss from instruction cache
+  * read miss from data cache
+  * write miss to data cache
+* General Cache Organization - B × E × S = T
+  * B: number of bytes in a cache line (typically 64)
+  * E: a set of cache lines (typically 1, 2, 4, 8, or 16 -> 2^k)
+  * S: the number of sets that make up the cache
+  * T: total cache size
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191102155-a87e2842-3258-45a3-aec1-237d220125c5.png">
+
+* Write to cache
+  * Hit
+    * Write-through (write immediately to main memory as well)
+    * Write-back (defer write to memory until replacement of line) -> Need a dirty bit (indicate whether line different from memory or not)
+  * Miss
+    * Write-allocate (write to next level down memory, but also update this cache level)
+    * No-write-allocate (writes straight to next level down memory, do not load into this cache level)
+  * Typical combos met in practice:
+    * Write-back + Write-allocate -> more common
+    * Write-through + No-write-allocate
+* Hit & Miss
+  * Hit Time: 4 clock cycles for L1, 10 clock cycles for L2
+  * Miss Penalty: typically 50-200 cycles for main memory
+### Memory Mountain
+* Measures read-throughput as a function of spatial and temporal locality == Compact way to characterize memory system performance
+* read throughput == read bandwidth == number of bytes read from main memory per second (MB/s)
+* effective bandwidth == computed by dividing amount of data moved to solve the problem (in Bytes) to the amount of time required to finish the execution (in seconds)
+  * effective bandwidth <= the bandwidth
+* ```volatile``` keyword forces to write the variable to main memory
+
