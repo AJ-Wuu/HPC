@@ -31,8 +31,8 @@ if [ $result -ge 0 ]; then
     exit $result
 fi
 ```
-<img width="727" alt="image" src="https://user-images.githubusercontent.com/84046974/191062782-5d00e455-e514-4967-82f3-9d98ec3a0049.png">
-<img width="723" alt="image" src="https://user-images.githubusercontent.com/84046974/191062991-ac7fc20b-4cd7-4d1b-a447-5ea0a322f581.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191062782-5d00e455-e514-4967-82f3-9d98ec3a0049.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191062991-ac7fc20b-4cd7-4d1b-a447-5ea0a322f581.png">
 
 ## Hardware-Software Interplay
 ### Instruction & Data
@@ -63,8 +63,8 @@ fi
   * Complex Instruction Set Computing Architecture
     * Instructions have various lengths
     * Flexibility at the price of complexity and power
-![image](https://user-images.githubusercontent.com/84046974/191065490-31c1eb91-8612-4ec9-97a8-2a0bc1083764.png)
-![image](https://user-images.githubusercontent.com/84046974/191066153-a1beda39-7d31-4b38-a1ba-d6f775ca726e.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191065490-31c1eb91-8612-4ec9-97a8-2a0bc1083764.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191066153-a1beda39-7d31-4b38-a1ba-d6f775ca726e.png">
 ### Fetch-Decode-Execute (FDX) cycle -- keeps the CU and ALU busy, instruction after instruction
 * Fetch: an instruction is fetched from memory
 * Decode: the string of 1s and 0s are decoded by the CU
@@ -81,7 +81,7 @@ fi
 | op (6 bits) | address (26 bits) == word address, not an offset |
 |:-----------:|-------------------------------------------------:|
 ### Transistors: AND, OR, NOT
-![image](https://user-images.githubusercontent.com/84046974/191073967-967f724f-aa78-473f-992d-112c6143bbf4.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191073967-967f724f-aa78-473f-992d-112c6143bbf4.png">
 ### Registers
 * A hardware asset whose role is that of information storing (information: data value or instruction)
 * The storage type with shortest latency – part of the CU & ALU combo
@@ -172,21 +172,21 @@ Stage 5: Write-back into register file
 * DRAM - Dynamic Random Access Memory
   * information stored as a charge in a **capacitor**
   * Drawback: capacitors leak -- need to recharge often
-![image](https://user-images.githubusercontent.com/84046974/191094139-41bd2bcf-7dac-406a-af2f-971074bd651a.png)
-![image](https://user-images.githubusercontent.com/84046974/191094173-5a345b99-c407-4056-bbad-b856e32ae460.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191094139-41bd2bcf-7dac-406a-af2f-971074bd651a.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191094173-5a345b99-c407-4056-bbad-b856e32ae460.png">
 
 ### Cache
 * All caches are typically on the chip and are SRAM
 * All read/write operations go through cache
 * Caches used to hold both data and instructions
 * Chip datapath:
-![image](https://user-images.githubusercontent.com/84046974/191095052-6f381f08-91b1-4afb-9c1d-a79fa8fd9b0f.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191095052-6f381f08-91b1-4afb-9c1d-a79fa8fd9b0f.png">
 
 ### Processor Clock & Memory Clock
-<img width="523" alt="image" src="https://user-images.githubusercontent.com/84046974/191095414-8eb9aa17-d9c9-407e-9d96-01dd83c3f93c.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191095414-8eb9aa17-d9c9-407e-9d96-01dd83c3f93c.png">
 
 ### Cache Hierarchy
-<img width="397" alt="image" src="https://user-images.githubusercontent.com/84046974/191095909-c535e491-1203-4e78-bed8-3725a753711b.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191095909-c535e491-1203-4e78-bed8-3725a753711b.png">
 
 ### Principle of Locality
 * Temporal locality: Recently referenced items are likely to be referenced again in the near future
