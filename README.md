@@ -65,3 +65,7 @@ fi
     * Flexibility at the price of complexity and power
 ![image](https://user-images.githubusercontent.com/84046974/191065490-31c1eb91-8612-4ec9-97a8-2a0bc1083764.png)
 ![image](https://user-images.githubusercontent.com/84046974/191066153-a1beda39-7d31-4b38-a1ba-d6f775ca726e.png)
+#### Fetch-Decode-Execute (FDX) cycle -- keeps the CU and ALU busy
+* Fetch: an instruction is fetched from memory
+* Decode: the string of 1s and 0s are decoded by the CU
+* Execute: once all data (operands) available, instruction is executed (can take several cycles of the CPU)
