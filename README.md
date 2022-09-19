@@ -134,6 +134,7 @@ Stage 5: Write-back into register file
         2. Use with if-then-else statements
     3. Note: when your prediction is wrong you have to discard the [micro]instruction[s] executed speculatively and take the correct execution path
 ### Multiple-Issue
+* Superscalar == a chip that can do multiple-issue
 * A multiple-issue processor core has the hardware chops to issue more than one instruction per cycle
 * On average, more than one instruction is processed by the same core in the same clock cycle
 * Static multiple-issue: predefined, doesn’t change at run time
@@ -146,8 +147,13 @@ Stage 5: Write-back into register file
 * TLP (Thread Level Parallelism)
   * simultaneously instructions from different processes or different threads
   * associated with multiple PCs
+* Note that superscalar is associated with one PC
 * Process & Thread
   * Processes run in separate memory spaces -- distributed-memory parallel computing
   * Threads (of the same process) run in a shared memory space -- shared-memory parallel computing
 ### Multi-threading
+* Coarse: Instruction Control switches to issuing from another thread only when the first thread runs into a long-latency operation 
+* Fine: Instruction Control can issue instructions from a different thread each cycle
+* Simutaneous: Instruction Control can issue instructions from different threads in the same cycle
+### Measure Speed of Execution
 
