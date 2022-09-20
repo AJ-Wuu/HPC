@@ -118,7 +118,7 @@ Stage 5: Write-back into register file
 * One clock cycle: the amount of time required to complete one stage of the pipeline
 * Pipelined processor: one instruction retired at each clock cycle
 * Non-pipelined processor: no overlap when executing instructions
-* Important Remark: Pipelining does not decrease the time to complete one instruction but rather it increases the throughput of the processor by overlapping different stages of processing of different instructions
+* Important Remark: Pipelining does not decrease the time to complete one **instruction** but rather it increases the throughput of the processor by overlapping different stages of processing of different instructions
 #### Hazards
 1. Structural Hazards
     1. Increase register number
