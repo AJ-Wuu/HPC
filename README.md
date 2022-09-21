@@ -235,4 +235,47 @@ Stage 5: Write-back into register file
 * effective bandwidth == computed by dividing amount of data moved to solve the problem (in Bytes) to the amount of time required to finish the execution (in seconds)
   * effective bandwidth <= the bandwidth
 * ```volatile``` keyword forces to write the variable to main memory
+### Virtual Memory
+1. Virtual memory (for compilers): a fictitious space of 2<sup>32</sup> addresses (on 32 bit architectures) in which a process sees its data being placed, the instructions stored, etc.
+    1. Pointers all point to virtual memory
+    2. Kernel development deals with physical memory
+    3. malloc() & calloc()
+        1. malloc() doesn't do initialize, so it can tolerate memory requirement exceeding space in physical memory
+        2. calloc() does initialize, so it needs the memory to be prepared instantly -- no tolerance for exceeding memory requirement
+        3. calloc() takes longer as physical mem actually provisioned and also set to zero
+2. Physical memory: a busy place that hosts at the same time data and instructions associated with tens of applications running on the system
+3. MMU (Memory Management Unit) -- functionality
+    1. Virtual Memory management
+    2. Memory protection
+    3. Cache control
+    4. Bus arbitration 
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191547499-a789a528-3c29-4c15-812d-49703eef438e.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191547766-fd7ad873-7bcd-4790-84b5-ebe2a4855ff3.png">
 
+#### Page Table (PT) -- stored in main memory
+* Virtual memory space is mapped back into the physical memory through a Page Table
+* Not EVERY virtual address is mapped to a physical memory address -- it works like **a page of virtual memory mapped to a frame of physical memory**
+  * The size of a page (or frame) is typically 4096 bytes = 2<sup>12</sup>
+  * Compare to 64 bytes, the size of a cache line (aka memory block)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191548140-2f4d8749-12e5-4a4e-952d-597499383f39.png">
+
+* clean / dirty bit (each entry in the PT has **at least** one): indicates that translation to frame should not proceed immediately
+  * clean: the corresponding frame is loaded in main memory + the very frame has not been associated with other virtual page
+  * dirty: page fault + OS need to look for the needed frame on disk (secondary memory)
+    * a lot of such bits will be dirty when you start the execution of a program as the data & instructions are not in memory
+
+#### Translation Lookaside Buffer (TLB) == a “cache” for the address translation process
+* TLB holds the translation of a small collection of virtual page numbers into frame IDs
+* A TLB miss leads to substantial overhead in the translation of a virtual memory address
+* In general,
+  * Good: hit == quicker address translation
+  * Bad:
+    * miss -> go to main memory -- required to read the PT entry
+    * miss again at main memory -> go to secondary memory -- **page fault** == significant latency & **memory thrashing** == repeatedly hitting page faults that time wasted in handling page faults dominates all the rest
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191551409-654e1b3b-9806-4343-9985-712d1beeaa2a.png">
+
+#### Frame
+* Refresher: a memory page, or virtual page, is a fixed-length contiguous block of virtual memory, described by a single entry in the Page Table
+* Large Size
+  * Pros: less TLB pressure
+  * Cons: waste of physical memory, bad for other processes with time-sharing (multi-tasking)
