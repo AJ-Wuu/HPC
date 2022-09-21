@@ -142,6 +142,10 @@ Stage 5: Write-back into register file
 * Static multiple-issue: predefined, doesn’t change at run time
 * Dynamic multiple-issue: determined at run time, the chip has dedicated hardware resources that can identify and execute additional work
   * Make sure the result has no difference if the instructions are executed "multiple-issue" or "single issue"
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/84046974/191537755-204e4185-3fe8-4e1d-8986-9009c8c916fc.png" align="left">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/84046974/191537857-d4da20a6-f9ce-4b33-b92d-36736c7db4b3.png" aligh="right">
+
+
 ### Parallelism happens on a SINGLE hardware CORE
 * ILP (Instruction-Level Parallelism)
   * simultaneously multiple instructions belong to the same program or process
