@@ -294,8 +294,7 @@ Stage 5: Write-back into register file
   * Effective bandwidth == Nominal bandwidth: you move lots of data
   * Effective bandwidth < Nominal bandwidth: you bring a block of data, use little of it, and ask for data from a different block
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/84046974/191994937-aa892d88-7b83-4bd2-b14c-67c5a1eec998.png" align="left">
-<img alt="image" src="https://user-images.githubusercontent.com/84046974/191994961-2819c7bc-ee7c-4764-8900-44b2ab862c2f.png" align="right">
-
+<img alt="image" src="https://user-images.githubusercontent.com/84046974/191994961-2819c7bc-ee7c-4764-8900-44b2ab862c2f.png">
 
 #### Instruction Level Parallelism (ILP) Wall
 * Dedicated hardware speculatively executes future instructions before the results of current instructions are known, while providing hardware safeguards to prevent the errors that might be caused by out of order execution 
