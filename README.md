@@ -142,9 +142,9 @@ Stage 5: Write-back into register file
 * Static multiple-issue: predefined, doesn’t change at run time
 * Dynamic multiple-issue: determined at run time, the chip has dedicated hardware resources that can identify and execute additional work
   * Make sure the result has no difference if the instructions are executed "multiple-issue" or "single issue"
-<img width="300" alt="image" src="https://user-images.githubusercontent.com/84046974/191537755-204e4185-3fe8-4e1d-8986-9009c8c916fc.png" align="left">
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/84046974/191537857-d4da20a6-f9ce-4b33-b92d-36736c7db4b3.png" aligh="right">
-
+<img width="200" alt="image" src="https://user-images.githubusercontent.com/84046974/191537755-204e4185-3fe8-4e1d-8986-9009c8c916fc.png" align="left">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/84046974/191537857-d4da20a6-f9ce-4b33-b92d-36736c7db4b3.png">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/84046974/192000936-ee11b2d7-6e66-459e-af0a-383a9f2f1748.png">
 
 ### Parallelism happens on a SINGLE hardware CORE
 * ILP (Instruction-Level Parallelism)
@@ -279,3 +279,72 @@ Stage 5: Write-back into register file
 * Large Size
   * Pros: less TLB pressure
   * Cons: waste of physical memory, bad for other processes with time-sharing (multi-tasking)
+
+## Parallel Computing
+### Main causes for sequential computing speed stalling
+#### Memory Wall -- the growing disparity of speed between CPU and memory outside the chip
+* Reason: latency and limited communication bandwidth beyond chip boundaries
+* latency = how many seconds it takes a packet of data to get from one designated point to another (measured by sending 32 bits data in memory transaction)
+  * tough
+  * like build a high-speed train & rails
+* bandwidth = how much data can be transferred per second
+  * doable -- add more "pipes"
+  * like adding more cars to a train
+* Memory-wise, you may or may not be at top speed for your memory
+  * Effective bandwidth == Nominal bandwidth: you move lots of data
+  * Effective bandwidth < Nominal bandwidth: you bring a block of data, use little of it, and ask for data from a different block
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/84046974/191994937-aa892d88-7b83-4bd2-b14c-67c5a1eec998.png" align="left">
+<img alt="image" src="https://user-images.githubusercontent.com/84046974/191994961-2819c7bc-ee7c-4764-8900-44b2ab862c2f.png" align="right">
+
+
+#### Instruction Level Parallelism (ILP) Wall
+* Dedicated hardware speculatively executes future instructions before the results of current instructions are known, while providing hardware safeguards to prevent the errors that might be caused by out of order execution 
+* Branches must be “guessed” to decide what instructions to execute simultaneously 
+* Data dependencies may prevent successive instructions from executing in parallel, even if there are no branches
+
+#### Power Wall
+* Power dissipation related to the clock frequency and feature length
+  * clock rates are limited to some threshold value
+* Significant increase in clock speed without heroic/expensive cooling not possible
+
+### Dennard scaling
+* dictates how the voltage/current, frequency should change in response to smaller feature size
+* voltage getting lower and lower
+* static power losses more prevalent
+* The bad news: direct tunneling gate leakage current (thin dielectric) ⨁ transistors too close
+* Amount of power dissipated grows to high levels
+  * Thermal runaway 
+  * Moving towards threshold at which computing not reliable 
+### Analogy
+* Ox: one powerful CPU core, running at high frequency, large cache to hide memory latency
+* Chicken: many meagre processors, running at lower frequency, not much cache or CU brain, requires other ways to hide memory latency
+
+### Flynn’s Taxonomy of Architectures
+#### SISD - Single Instruction/Single Data & SIMD - Single Instruction/Multiple Data
+* vector length = 8 ints × 4 bytes each × 8 bits/byte = 256 bit vector length
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192000629-759288f8-466b-4a33-bb35-07331d00f1d9.png" align="left">
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192001359-db164242-b9a6-4e36-8a3a-5244e4fac8a8.png">
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192001508-8cd17b36-5047-49e1-9670-eb893f7dc0ed.png">
+
+#### MISD - Multiple Instruction/Single Data & MIMD - Multiple Instruction/Multiple Data
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192002192-88f06b75-1a68-4529-959e-ce78471f7504.png" align="left">
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192002280-beb0d8da-0a29-4adf-9b39-9905de4137ea.png">
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192002363-31b3e2c6-2f08-4960-801b-67015e931cd2.png">
+
+### Amdahl’s Law - law of diminishing returns
+* illustrate how going parallel with a part of your code is going to lead to overall speedups
+
+### Algorithmic vs. Intrinsic Scaling
+* Algorithmic -> Scaling of a solution algorithm
+  * strictly about a mathematical solution algorithm
+  * expresses how the algorithm scales with the problem size
+* Implementation -> Scaling of a solution on a certain architecture
+  * Intrinsic Scaling: how the execution time changes with an increase in the size of the problem
+  * Strong Scaling: how the execution time changes when you increase the processing resources
+  * Weak Scaling: how the execution time changes when you increase the problem size but also the processing resources in a way that basically keeps the ratio of “problem size/processor” constant
+* Important: if Intrinsic Scaling significantly worse than Algorithmic Scaling then probably memory transactions are dominating the implementation
+* If the problem doesn’t scale, it can be an interplay of several factors
+  * the intrinsic nature of the problem at hand
+  * the attributes (organization) of the underlying hardware
+  * the algorithm used to solve the problem; i.e., the parallelism it exposes
+
