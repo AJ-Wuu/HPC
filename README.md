@@ -294,7 +294,7 @@ Stage 5: Write-back into register file
   * Effective bandwidth == Nominal bandwidth: you move lots of data
   * Effective bandwidth < Nominal bandwidth: you bring a block of data, use little of it, and ask for data from a different block
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/84046974/191994937-aa892d88-7b83-4bd2-b14c-67c5a1eec998.png" align="left">
-<img alt="image" src="https://user-images.githubusercontent.com/84046974/191994961-2819c7bc-ee7c-4764-8900-44b2ab862c2f.png">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/84046974/191994961-2819c7bc-ee7c-4764-8900-44b2ab862c2f.png">
 
 #### Instruction Level Parallelism (ILP) Wall
 * Dedicated hardware speculatively executes future instructions before the results of current instructions are known, while providing hardware safeguards to prevent the errors that might be caused by out of order execution 
@@ -323,11 +323,13 @@ Stage 5: Write-back into register file
 * vector length = 8 ints × 4 bytes each × 8 bits/byte = 256 bit vector length
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192000629-759288f8-466b-4a33-bb35-07331d00f1d9.png" align="left">
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192001359-db164242-b9a6-4e36-8a3a-5244e4fac8a8.png">
-<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192001508-8cd17b36-5047-49e1-9670-eb893f7dc0ed.png">
 
 #### MISD - Multiple Instruction/Single Data & MIMD - Multiple Instruction/Multiple Data
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192002192-88f06b75-1a68-4529-959e-ce78471f7504.png" align="left">
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192002280-beb0d8da-0a29-4adf-9b39-9905de4137ea.png">
+
+#### Comparison
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192001508-8cd17b36-5047-49e1-9670-eb893f7dc0ed.png" align="left">
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192002363-31b3e2c6-2f08-4960-801b-67015e931cd2.png">
 
 ### Amdahl’s Law - law of diminishing returns
