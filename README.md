@@ -131,9 +131,9 @@ Stage 5: Write-back into register file
     2. OOOE
 3. Control Hazards
     1. Static Branch Prediction: several heuristics for proceeding, like a do-while construct
-    2. Dynamic Branch Prediction: At a branching point, the branch/no-branch decision can change during the life of a program based on recent history
-        1. In some cases, branch prediction accuracy hits 90%
-        2. Use with if-then-else statements
+    2. Dynamic Branch Prediction: at a branching point, the branch/no-branch decision can change during the life of a program based on recent history
+        1. in some cases, branch prediction accuracy hits 90%
+        2. use with if-then-else statements
     3. Note: when your prediction is wrong you have to discard the [micro]instruction[s] executed speculatively and take the correct execution path
 ### Multiple-Issue
 * Superscalar == a chip that can do multiple-issue
@@ -141,7 +141,7 @@ Stage 5: Write-back into register file
 * On average, more than one instruction is processed by the same core in the same clock cycle
 * Static multiple-issue: predefined, doesn’t change at run time
 * Dynamic multiple-issue: determined at run time, the chip has dedicated hardware resources that can identify and execute additional work
-  * Make sure the result has no difference if the instructions are executed "multiple-issue" or "single issue"
+  * Make sure the result has no difference if the instructions are executed "multiple-issue" or "single-issue"
 <img width="200" alt="image" src="https://user-images.githubusercontent.com/84046974/191537755-204e4185-3fe8-4e1d-8986-9009c8c916fc.png" align="left">
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/84046974/191537857-d4da20a6-f9ce-4b33-b92d-36736c7db4b3.png">
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/84046974/192000936-ee11b2d7-6e66-459e-af0a-383a9f2f1748.png">
