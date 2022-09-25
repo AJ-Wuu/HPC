@@ -46,7 +46,7 @@ fi
 * Duties
   * Bringing in the next instruction from memory
   * Decoding the instruction (possibly breaking it up into uops -- micro-operations)
-  * Engaging in actions to enable “instruction level parallelism” (ILP, more later)
+  * Engaging in actions to enable “instruction level parallelism” (ILP)
 * CU manages/coordinates based on information encoded in the specific instruction it works on
 * A limited number of prompts that the CU understands and thus act upon
 #### ALU (Arithmetic Logic Unit)
