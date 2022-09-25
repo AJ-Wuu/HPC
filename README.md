@@ -37,9 +37,9 @@ fi
 ## Hardware-Software Interplay
 ### Instruction & Data
 * Instruction: stored in memory as string of 0 & 1 bits (often 32 or 64 bits)
-* Piece of Data: stored in memory as string of 0 & 1 bits (8 bits, or 16, or 64, etc. – can be even user defined)
+* Piece of Data: stored in memory as string of 0 & 1 bits (8 bits, or 16, or 64, etc. – can be user defined)
 * In terms of storage and movement, there is no distinction between instructions and data
-  * Instructions are fetched & decoded & executed (more on this later)
+  * Instructions are fetched & decoded & executed
   * Data is used to produce results according to rules specified by the instructions
 #### CU (Control Unit)
 * The CU controls the DATAPATH (the hardware collection of functional units + registers + buses)
