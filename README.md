@@ -64,7 +64,6 @@ fi
     * Instructions have various lengths
     * Flexibility at the price of complexity and power
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191065490-31c1eb91-8612-4ec9-97a8-2a0bc1083764.png">
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/84046974/191066153-a1beda39-7d31-4b38-a1ba-d6f775ca726e.png">
 
 ### Fetch-Decode-Execute (FDX) cycle -- keeps the CU and ALU busy, instruction after instruction
 * Fetch: an instruction is fetched from memory
