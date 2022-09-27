@@ -381,7 +381,7 @@ Stage 5: Write-back into register file
 * Asynchronicity between host and device:
   * Host: continuing execution right away after launching a kernel
   * Device: taking on the next task in the sequence of tasks in the stream
-<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192419200-51ac70b3-01b9-4333-ab30-5bd1e82ec62a.png">
+<img height="120" alt="image" src="https://user-images.githubusercontent.com/84046974/192419200-51ac70b3-01b9-4333-ab30-5bd1e82ec62a.png">
 
 ```
 #include <cuda.h>
