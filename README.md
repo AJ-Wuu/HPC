@@ -348,3 +348,72 @@ Stage 5: Write-back into register file
   * the attributes (organization) of the underlying hardware
   * the algorithm used to solve the problem; i.e., the parallelism it exposes
 
+## The Fermi Architecture
+### The Stream Multiprocessor (SM) - hardware
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192412656-fb93d084-20bf-4544-ab0d-e0a072a77152.png">
+
+### High speed requires high bandwidth
+### Parallelism
+#### Coarse grain parallelism (good for CPUs)
+* Few tasks
+* Tasks are heterogeneous
+* Tasks are in general complex, lots of control flow
+* Example: baking a cake, making coffee, broiling fish – all at the same time
+#### Fine grain parallelism (very good for GPU, ok for CPU)
+* Many, many tasks
+* Tasks are basically identical
+* Tasks are in general pretty straightforward, lots of math, not much control flow
+* Example application: computer graphics – lots of pixels to deal with “shaders” – deal with one pixel at a time
+
+### CUDA (Compute Unified Device Architecture)
+* GPU as a highly multithreaded coprocessor
+* As a compute device, GPU
+  * is a co-processor to the CPU or host
+  * has its own memory (device memory, in CUDA parlance)
+  * runs many threads in parallel
+* Differences between GPU and CPU threads:
+  * GPU threads are extremely lightweight and very little creation overhead
+  * GPU needs 1000s of threads for full efficiency; Multi-core CPU needs only a few heavy ones
+* Data needs to be copied into GPU device memory and the results need to be fetched back
+* For GPU computing to pay off, the data transfer overhead should be overshadowed by the GPU number crunching that draws on that data
+* The CUDA kernel calls and copying to/from GPU are managed by the CUDA runtime in a separate stream associated w/ the GPU execution
+* The CUDA runtime places all calls that invoke the GPU in a stream (i.e., ordered collection) of calls (FIFO stream)
+* Asynchronicity between host and device:
+  * Host: continuing execution right away after launching a kernel
+  * Device: taking on the next task in the sequence of tasks in the stream
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192419200-51ac70b3-01b9-4333-ab30-5bd1e82ec62a.png">
+
+```
+#include <cuda.h>
+#include <iostream>
+
+__global__ void simpleKernel(int* data) {
+    //this adds a value to a variable stored in global memory
+    data[threadIdx.x] += 2*(blockIdx.x + threadIdx.x);
+}
+
+int main() {
+    const int numElems = 4;
+    int hostArray[numElems], *devArray;
+
+    //allocate memory on the device (GPU); zero out all entries in this device array 
+    cudaMalloc((void**)&devArray, sizeof(int) * numElems);
+    cudaMemset(devArray, 0, numElems * sizeof(int));
+
+    //invoke GPU kernel, with one block that has four threads
+    simpleKernel<<<1,numElems>>>(devArray);
+    
+    //bring the result back from the GPU into the hostArray 
+    cudaMemcpy(&hostArray, devArray, sizeof(int) * numElems, cudaMemcpyDeviceToHost);
+
+    //print out the result to confirm that things are looking good 
+    std::cout << "Values stored in hostArray: " << std::endl;
+    for (int i = 0; i < numElems; i++)
+        std::cout << hostArray[i] << std::endl;
+    
+    //release the memory allocated on the GPU 
+    cudaFree(devArray);
+    return 0;
+}
+```
+ 
