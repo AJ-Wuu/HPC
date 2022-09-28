@@ -439,3 +439,25 @@ kernelFoo<<<DimGrid, DimBlock>>>(...algorithms...);
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192871048-d1911e81-55b8-47ee-a14c-b508b572d9c5.png" align="left">
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192870287-283fba53-5616-4c64-94a0-bef168d121a9.png">
 
+### Overshoot: ```const int blocksPerGrid = (arraySize + threadsPerBlock – 1)/threadsPerBlock;```
+* M = number of threads
+* 1D CUDA Block: int index = threadIdx.x + blockIdx.x * M;
+<img width="398" alt="image" src="https://user-images.githubusercontent.com/84046974/192875155-ebf89092-8738-4bb1-920e-74df7caf4ab3.png">
+
+### Execution Scheduling Issues
+1. A device-level scheduler: assigns one [more] block to an SM that signal that it has “excess capacity”
+    1. Thread Blocks are distributed to the SMs (**potentially more than one block per SM**)
+    2. As a Thread Block completes kernel execution on an SM, resources on that SM are freed
+        1. Blocks do not leave its assigned SM before all threads finishing executing the kernel
+        2. Device level scheduler can launch next block in line after one block is finished and retired
+    3. Limits
+        1. number of blocks per SM <= 32
+        2. number of threads per SM <= 2048
+2. An SM-level scheduler: schedules the execution of the threads in a block onto the SM functional units
+    1. Each block of threads divided in 32-thread warps -- Warp: A group of 32 threads of consecutive IDs
+    2. Warps are the basic scheduling unit on the SM
+    3. Limits: number of resident warps on an SM <= 64
+
+### Thread Index vs Thread ID
+![image](https://user-images.githubusercontent.com/84046974/192875627-3a279359-4c3f-40c7-9ce6-c8e393bec301.png)
+
