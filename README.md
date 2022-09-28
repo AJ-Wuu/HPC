@@ -348,8 +348,7 @@ Stage 5: Write-back into register file
   * the attributes (organization) of the underlying hardware
   * the algorithm used to solve the problem; i.e., the parallelism it exposes
 
-## The Fermi Architecture
-### The Stream Multiprocessor (SM) - hardware
+### The Fermi Architecture - The Stream Multiprocessor (SM) - hardware
 <img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192412656-fb93d084-20bf-4544-ab0d-e0a072a77152.png">
 
 ### High speed requires high bandwidth
@@ -365,7 +364,7 @@ Stage 5: Write-back into register file
 * Tasks are in general pretty straightforward, lots of math, not much control flow
 * Example application: computer graphics – lots of pixels to deal with “shaders” – deal with one pixel at a time
 
-### CUDA (Compute Unified Device Architecture)
+## CUDA (Compute Unified Device Architecture)
 * GPU as a highly multithreaded coprocessor
 * As a compute device, GPU
   * is a co-processor to the CPU or host
@@ -416,4 +415,27 @@ int main() {
     return 0;
 }
 ```
- 
+
+### GPU Execution Configuration
+* The HOST(the master CPU thread) instructs the DEVICE (the GPU card) with the number of threads to execute a KERNEL
+* A kernel function must be called with an execution configuration
+  * Threads in a block
+    * can be organized as a 3D structure (x,y,z)
+    * maximum x- or y-dimension of a block is 1024
+    * maximum z-dimension of a block is 64
+    * maximum number of threads in each block is 1024
+  * Blocks in a grid
+    * can be organized as a 3D structure
+    * max of 2<sup>31</sup>-1 arranged as 65,535 by 65,535
+  * if more threads are needed -- call the kernel again
+```c++
+__global__void kernelFoo(...); // declaration
+dim3DimGrid(100, 50);        // 2D grid structure, w/ total of 5000 thread blocks
+dim3DimBlock(4, 8, 8);       // 3D block structure, with 256 threads per block
+kernelFoo<<<DimGrid, DimBlock>>>(...algorithms...);
+```
+
+* A block of threads get mapped to a SM
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192871048-d1911e81-55b8-47ee-a14c-b508b572d9c5.png" align="left">
+<img height="200" alt="image" src="https://user-images.githubusercontent.com/84046974/192870287-283fba53-5616-4c64-94a0-bef168d121a9.png">
+
