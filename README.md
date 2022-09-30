@@ -461,3 +461,11 @@ kernelFoo<<<DimGrid, DimBlock>>>(...algorithms...);
 ### Thread Index vs Thread ID
 ![image](https://user-images.githubusercontent.com/84046974/192875627-3a279359-4c3f-40c7-9ce6-c8e393bec301.png)
 
+### Threads into Wraps
+1. Thread IDs within a warp are consecutive and increasing (Wrap 0 has Thread 0 ~ 31, Wrap 1 has Thread 32 ~ 63, ...)
+2. Threads / Warp = 32; Max Blocks / SM = 32; Max Warps / SM = 64; Max Threads / SM = 2048
+3. Warp scheduling is not under user control in CUDA
+4. Each thread block split into one or more warps
+5. If thread block size is not multiple of warp size, unused lanes go wasted (eg. block w/ 50 threads -> for 64 lanes, the last 14 lanes go wasted)
+6. The hardware schedules each warp independently
+7. Warps within a thread block execute independently
