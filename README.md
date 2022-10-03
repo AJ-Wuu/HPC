@@ -110,6 +110,6 @@ kernelFoo<<<DimGrid, DimBlock>>>(...algorithms...);
 ```
 
 ## Overshoot
-* ```const int blocksPerGrid = (arraySize + threadsPerBlock – 1) / threadsPerBlock;```
+* **```const int blocksPerGrid = (arraySize + threadsPerBlock – 1) / threadsPerBlock;```**
 * M = number of threads
 * 1D CUDA Block: ```int index = threadIdx.x + blockIdx.x * M;```
