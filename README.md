@@ -109,6 +109,7 @@ dim3DimBlock(4, 8, 8);       // 3D block structure, with 256 threads per block
 kernelFoo<<<DimGrid, DimBlock>>>(...algorithms...);
 ```
 
-## Overshoot: ```const int blocksPerGrid = (arraySize + threadsPerBlock – 1) / threadsPerBlock;```
+## Overshoot
+* ```const int blocksPerGrid = (arraySize + threadsPerBlock – 1) / threadsPerBlock;```
 * M = number of threads
 * 1D CUDA Block: ```int index = threadIdx.x + blockIdx.x * M;```
