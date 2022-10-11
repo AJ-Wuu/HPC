@@ -1,4 +1,6 @@
 # HPC - High Performance Computing
+## CUDA
+https://docs.nvidia.com/cuda/cuda-memcheck/index.html
 ## Slurm (originally Simple Linux Utility for Resource Management)
 ### Log In: ```ssh awu53@euler.wacc.wisc.edu```
 ### Slurm used on Euler to share Euler’s hardware and software resources
