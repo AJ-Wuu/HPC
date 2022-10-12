@@ -47,8 +47,8 @@ __global__ void matmul_kernel(const T *A, const T *B, T *C, unsigned int n) {
 
     // verify valid thread
     if (index < n) {
-        indexC_global = n * blockDim.x * blockIdx.y + blockDim.x * blockIdx.x;
-        C[indexC_global + n * threadIdx.y + threadIdx.x] = c_temp;
+        indexC_global = n * (threadIdx.y + blockDim.x * blockIdx.y) + (threadIdx.x + blockDim.x * blockIdx.x);
+        C[indexC_global] = c_temp;
     }
 }
 
