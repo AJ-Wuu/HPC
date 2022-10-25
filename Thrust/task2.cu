@@ -1,4 +1,5 @@
 #include "count.cuh"
+#include "device_launch_parameters.h"
 #include "time.h"
 #include <cuda.h>
 #include <cstdio>
@@ -7,6 +8,9 @@
 #include <thrust/functional.h>
 #include <thrust/device_vector.h>
 #include <thrust/host_vector.h>
+#include <thrust/random/uniform_real_distribution.h>
+#include <thrust/random/linear_congruential_engine.h>
+#include <random>
 
 using namespace std;
 
@@ -24,7 +28,7 @@ int main(int argc, char* argv[]) {
     thrust::device_vector<int> d_in = h_in;
     thrust::device_vector<int> values;
     thrust::device_vector<int> counts;
-    
+
     cudaEvent_t start;
     cudaEvent_t stop;
     cudaEventCreate(&start);
@@ -37,7 +41,7 @@ int main(int argc, char* argv[]) {
     cudaEventElapsedTime(&ms, start, stop);
 
     int size = values.size();
-    printf("%f\n", values[size - 1]);
-    printf("%f\n", counts[size - 1]);
-    printf("%f\n", ms);
+    std::cout << values[size - 1] << std::endl;
+    std::cout << counts[size - 1] << std::endl;
+    std::printf("%f\n", ms);
 }

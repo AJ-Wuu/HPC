@@ -2,7 +2,7 @@
 #include <cuda.h>
 #include <cstdio>
 #include <cstdlib>
-#include <thrust/transform_reduce.h>
+#include <thrust/reduce.h>
 #include <thrust/functional.h>
 #include <thrust/device_vector.h>
 #include <thrust/host_vector.h>
@@ -21,16 +21,16 @@ int main(int argc, char* argv[]) {
     // generate random numbers on the host
     thrust::host_vector<float> h_vec(n);
     thrust::generate(h_vec.begin(), h_vec.end(), rand_custom);
-    
+
     // transfer data to the device
     thrust::device_vector<float> d_vec = h_vec;
-    
+
     cudaEvent_t start;
     cudaEvent_t stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
     cudaEventRecord(start);
-    float result = thrust::reduce(d_vec.begin(), d_vec.end(), d_vec[0]);
+    float result = thrust::reduce(d_vec.begin(), d_vec.end());
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     float ms;

@@ -9,7 +9,7 @@
 #include <cub/util_allocator.cuh>
 #include <cub/device/device_reduce.cuh>
 
-using namespace std;
+using namespace cub;
 CachingDeviceAllocator  g_allocator(true);  // caching allocator for device memory
 
 int main(int argc, char* argv[]) {
@@ -49,11 +49,11 @@ int main(int argc, char* argv[]) {
 
     float gpu_sum;
     CubDebugExit(cudaMemcpy(&gpu_sum, d_sum, sizeof(float) * 1, cudaMemcpyDeviceToHost));
-    printf("%f\n", gpu_sum);
-    printf("%f\n", ms);
+    std::printf("%f\n", gpu_sum);
+    std::printf("%f\n", ms);
 
     // cleanup
     if (d_in) CubDebugExit(g_allocator.DeviceFree(d_in));
     if (d_sum) CubDebugExit(g_allocator.DeviceFree(d_sum));
-    if (d_temp_storage) CubDebugExit(g_allocator.DeviceFree(d_temp_storage));   
+    if (d_temp_storage) CubDebugExit(g_allocator.DeviceFree(d_temp_storage));
 }
